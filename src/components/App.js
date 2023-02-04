@@ -10,7 +10,8 @@ const App = () => {
 const OptimizeTheOperation = ({ onClick }) => {
   const [number, setNumber] = useState(10000);
 
-  const prime = primeNumber(number);
+  // useMemo hook to only recalculate the prime numbers when the number changes
+  const prime = useMemo(() => primeNumber(number), [number]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ const OptimizeTheOperation = ({ onClick }) => {
       <form onSubmit={submitHandler}>
         <input id="num" />
         <button id="submit" type="submit">
-          Click me 
+          Click me
         </button>
       </form>
       <br />
